@@ -1,0 +1,64 @@
+:root {
+  --light: #d0caca;
+  --dark: black;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: rgb(105, 105, 105);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.toggle-switch {
+  width: 200px;
+  position: relative;
+}
+label {
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  background: var(--dark);
+  border-radius: 50px;
+  cursor: pointer;
+}
+/* tạo nền trắng */
+.slider {
+  position: absolute;
+  height: 100%;
+  left: 0px;
+  width: 100%;
+  border-radius: 50px;
+}
+/* Khi input đc check thì slider đổi nền */
+input:checked ~ .slider {
+  background-color: var(--light);
+}
+/* vẽ hình mặt trăng */
+.slider::before {
+  position: absolute;
+  content: "";
+  display: inline-block;
+  width: 75px;
+  top: 12px;
+  left: 16px;
+  height: 75px;
+  border-radius: 50%;
+  background-color: var(--dark);
+  box-shadow: inset 20px 0px 0px 0px #f7ec1d;
+  transition: 0.5s;
+}
+/* nếu input đc check thì  */
+input:checked ~ .slider::before {
+  transform: translateX(95px);
+  background-color: var(--dark);
+  box-shadow: none;
+}
+/* chuyển màu nền */
+body:has(:checked) {
+  background-color: #fff;
+}
